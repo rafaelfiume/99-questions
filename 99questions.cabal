@@ -1,0 +1,75 @@
+-- This file has been generated from package.yaml by hpack version 0.20.0.
+--
+-- see: https://github.com/sol/hpack
+--
+-- hash: 47d934a1192680d5ea552e7245fe153f878951826cf71dcca70482a673d2d657
+
+name:           99questions
+version:        0.1.0.0
+synopsis:       Playing around with 99 questions
+description:    Please see the README on Github at <https://github.com/githubuser/99-questions#readme>
+category:       Game
+homepage:       https://github.com/githubuser/99-questions#readme
+bug-reports:    https://github.com/githubuser/99-questions/issues
+author:         Rafael Fiume
+maintainer:     rafael.fiume@yahoo.it
+copyright:      2018 Rafael Fiume
+license:        MIT
+license-file:   LICENSE
+build-type:     Simple
+cabal-version:  >= 1.10
+
+extra-source-files:
+    ChangeLog.md
+    README.md
+
+source-repository head
+  type: git
+  location: https://github.com/githubuser/99-questions
+
+library
+  hs-source-dirs:
+      src
+  build-depends:
+      base >=4.7 && <5
+  exposed-modules:
+      Lib
+      Playground.Learning
+      Playground.Listss
+  other-modules:
+      Paths_99questions
+  default-language: Haskell2010
+
+executable 99questions-exe
+  main-is: Main.hs
+  hs-source-dirs:
+      app
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      99questions
+    , base >=4.7 && <5
+  other-modules:
+      Paths_99questions
+  default-language: Haskell2010
+
+test-suite 99questions-test
+  type: exitcode-stdio-1.0
+  main-is: Spec.hs
+  hs-source-dirs:
+      test
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      99questions
+    , QuickCheck
+    , base >=4.7 && <5
+    , hspec ==2.*
+    , tasty
+    , tasty-auto
+    , tasty-hspec
+    , tasty-html
+    , tasty-quickcheck
+  other-modules:
+      Playground.ListssSpec
+      PropsTest
+      Paths_99questions
+  default-language: Haskell2010
