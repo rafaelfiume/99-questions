@@ -35,8 +35,8 @@ myReverse :: [a] -> [a]
 myReverse [] = []
 myReverse (x:xs) = myReverse xs ++ [x]
 
-anotherReverse :: [a] -> [a]
-anotherReverse = foldl (flip (:)) []
+myReverse' :: [a] -> [a]
+myReverse' = foldl (flip (:)) []
 
 isPalindrome :: (Eq a) => [a] -> Bool
 isPalindrome xs = xs == myReverse xs
@@ -51,3 +51,7 @@ flatten :: NestedList a -> [a]
 flatten (Elem x) = [x]
 flatten (List []) = []
 flatten (List (x:xs)) = flatten x ++ flatten (List xs)
+
+flatten' :: NestedList a -> [a]
+flatten' (Elem x) = [x]
+flatten' (List ls) = concatMap flatten' ls
