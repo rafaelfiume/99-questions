@@ -2,7 +2,7 @@
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 47d934a1192680d5ea552e7245fe153f878951826cf71dcca70482a673d2d657
+-- hash: ce2d72051d3349a54e8710169312edc26e3df90271134abbb5542a45da668f16
 
 name:           99questions
 version:        0.1.0.0
@@ -32,6 +32,7 @@ library
       src
   build-depends:
       base >=4.7 && <5
+    , mtl
   exposed-modules:
       Lib
       Playground.Learning
@@ -48,6 +49,7 @@ executable 99questions-exe
   build-depends:
       99questions
     , base >=4.7 && <5
+    , mtl
   other-modules:
       Paths_99questions
   default-language: Haskell2010
@@ -63,6 +65,7 @@ test-suite 99questions-test
     , QuickCheck
     , base >=4.7 && <5
     , hspec ==2.*
+    , mtl
     , tasty
     , tasty-auto
     , tasty-hspec

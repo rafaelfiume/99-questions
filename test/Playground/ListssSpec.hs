@@ -4,6 +4,7 @@ import Test.Hspec (Spec, describe, it, shouldBe, pending, context)
 import Control.Exception (evaluate)
 import Test.QuickCheck
 
+import Control.Monad.Writer -- for compressWriter
 import Playground.Listss
 
 {-# ANN module "HLint: ignore Use camelCase" #-}
@@ -48,3 +49,12 @@ spec_preludeExample = describe "Listss stuff" $ do
             flatten (Elem 5) `shouldBe` [5]
             flatten (List [Elem 1, List [Elem 2, List [Elem 3, Elem 4], Elem 5]]) `shouldBe` [1,2,3,4,5]
             flatten (List []) `shouldBe` ([] :: [Int]) -- Cast is necessary otherwise compiler complains "wha's the f#*k1n3 type?"
+
+    context "compress" $ do
+        it "replaces with a single copy of the element a list contains repeated elements" $ do
+            compress "aaaabccaadeeee" `shouldBe` "abcade"
+            compress [1,1,1,5,5,3,3,3,3,3,4] `shouldBe` [1,5,3,4]
+
+        it "(writer monad version) does the same but also logs each step" $ do
+            fst (runWriter $ compressWriter "aaaabccaadeeee") `shouldBe` "abcade"
+            fst (runWriter $ compressWriter [1,1,1,5,5,3,3,3,3,3,4]) `shouldBe` [1,5,3,4]
