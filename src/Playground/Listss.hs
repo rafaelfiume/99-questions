@@ -4,7 +4,9 @@ module Playground.Listss (
     elementAt,
     myLength,
     myReverse,
-    isPalindrome
+    isPalindrome,
+    flatten,
+    NestedList(..)
 ) where
 
 myLast :: [a] -> a
@@ -38,3 +40,14 @@ anotherReverse = foldl (flip (:)) []
 
 isPalindrome :: (Eq a) => [a] -> Bool
 isPalindrome xs = xs == myReverse xs
+
+isPalindrome' :: (Eq a) => [a] -> Bool
+isPalindrome' [_] = True
+isPalindrome' xs = head xs == last xs && isPalindrome' (tail . init $ xs)
+
+data NestedList a = Elem a | List [NestedList a] deriving (Show)
+
+flatten :: NestedList a -> [a]
+flatten (Elem x) = [x]
+flatten (List []) = []
+flatten (List (x:xs)) = flatten x ++ flatten (List xs)

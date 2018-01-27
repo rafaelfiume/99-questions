@@ -43,3 +43,8 @@ spec_preludeExample = describe "Listss stuff" $ do
             isPalindrome [1,2,4,8,16,8,4,2,1] `shouldBe` True
             isPalindrome "Joana" `shouldBe` False
 
+    context "flatten" $
+        it "flattens a nested list" $ do
+            flatten (Elem 5) `shouldBe` [5]
+            flatten (List [Elem 1, List [Elem 2, List [Elem 3, Elem 4], Elem 5]]) `shouldBe` [1,2,3,4,5]
+            flatten (List []) `shouldBe` ([] :: [Int]) -- Cast is necessary otherwise compiler complains "wha's the f#*k1n3 type?"
