@@ -2,7 +2,7 @@
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: ce2d72051d3349a54e8710169312edc26e3df90271134abbb5542a45da668f16
+-- hash: e65f62e67189c2197572e8081fa6daeadab4d99a7dd4281566edd10e155a7e01
 
 name:           99questions
 version:        0.1.0.0
@@ -34,6 +34,7 @@ library
       base >=4.7 && <5
     , mtl
   exposed-modules:
+      Grooking.BinarySearch
       Lib
       Playground.Learning
       Playground.Listss
@@ -72,6 +73,7 @@ test-suite 99questions-test
     , tasty-html
     , tasty-quickcheck
   other-modules:
+      Grooking.BinarySearchSpec
       Playground.ListssSpec
       PropsTest
       Paths_99questions

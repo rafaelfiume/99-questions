@@ -57,4 +57,4 @@ spec_preludeExample = describe "Listss stuff" $ do
 
         it "(writer monad version) does the same but also logs each step" $ do
             fst (runWriter $ compressWriter "aaaabccaadeeee") `shouldBe` "abcade"
-            fst (runWriter $ compressWriter [1,1,1,5,5,3,3,3,3,3,4]) `shouldBe` [1,5,3,4]
+            fst (runWriter $ compressWriter [1,1,1,5,5,3,3,3,3,3,4]) `shouldBe` [1,5,3,4] 
