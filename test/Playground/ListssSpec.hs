@@ -10,13 +10,14 @@ import Playground.Listss
 
 spec_lists :: Spec
 spec_lists = describe "Lists (Questions 1 to 10)" $ do
-    context "myLast" $ do
+    context "myLast" $
         it "returns the last element" $ do
             myLast [1,2,3,4] `shouldBe` 4
             myLast ['z','x','y'] `shouldBe` 'y'
 
-        it "returns the last element (property checking)"
-            pending
+        -- TODO RF : 03/02/2018 : See how to property check this one
+        -- it "returns the last element (property checking)"
+        --    pending
 
     context "myButLast" $
         it "returns the last but one element of a list" $
