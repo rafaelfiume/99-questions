@@ -1,7 +1,6 @@
 module Playground.ListssSpec where
 
 import Test.Hspec (Spec, describe, it, shouldBe, pending, context)
-import Control.Exception (evaluate)
 import Test.QuickCheck
 
 import Control.Monad.Writer -- for compressWriter
@@ -9,8 +8,8 @@ import Playground.Listss
 
 {-# ANN module "HLint: ignore Use camelCase" #-}
 
-spec_preludeExample :: Spec
-spec_preludeExample = describe "Listss stuff" $ do
+spec_lists :: Spec
+spec_lists = describe "Lists (Questions 1 to 10)" $ do
     context "myLast" $ do
         it "returns the last element" $ do
             myLast [1,2,3,4] `shouldBe` 4
@@ -57,4 +56,9 @@ spec_preludeExample = describe "Listss stuff" $ do
 
         it "(writer monad version) does the same but also logs each step" $ do
             fst (runWriter $ compressWriter "aaaabccaadeeee") `shouldBe` "abcade"
-            fst (runWriter $ compressWriter [1,1,1,5,5,3,3,3,3,3,4]) `shouldBe` [1,5,3,4] 
+            fst (runWriter $ compressWriter [1,1,1,5,5,3,3,3,3,3,4]) `shouldBe` [1,5,3,4]
+
+    context "pack" $
+        it "packs consecutive duplicates of list elements into sublists" $ do
+        pack2 ['a', 'a', 'a', 'a', 'b', 'c', 'c', 'a', 'a', 'd', 'e', 'e', 'e', 'e'] `shouldBe` ["aaaa","b","cc","aa","d","eeee"]
+        pack2 [1,1,1,2,2,2,2,2,5,3,3,3,3] `shouldBe` [[1,1,1], [2,2,2,2,2], [5], [3,3,3,3]]

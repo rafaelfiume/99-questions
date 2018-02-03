@@ -6,11 +6,14 @@ module Playground.Listss (
     myReverse,
     isPalindrome,
     NestedList(..), flatten,
-    compress, compressWriter
+    compress, compressWriter,
+    pack2
 ) where
 
-import Control.Monad        -- for compressWriter (8th)
-import Control.Monad.Writer -- for compressWriter (8th)
+import Control.Monad (foldM)               -- for compressWriter (8th)
+import Control.Monad.Writer (Writer, tell) -- for compressWriter (8th)
+
+import Data.List (group)                   -- for pack (9th)
 
 -- 1st
 
@@ -103,3 +106,13 @@ compress' :: (Eq a) => [a] -> [a]
 compress' xs = foldr f (const []) xs Nothing
     where f x r a@(Just q) | x == q = r a
           f x r _ = x : r (Just x)
+
+-- 9th
+
+pack :: (Eq a) => [a] -> [[a]]
+pack = group
+
+pack2 :: (Eq a) => [a] -> [[a]]
+pack2 = foldr packSame []
+    where packSame e ls@(x:xs) | head x == e = (e:x):xs
+          packSame e xs = [e]:xs
