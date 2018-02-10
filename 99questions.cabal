@@ -47,7 +47,7 @@ executable 99questions-exe
   main-is: Main.hs
   hs-source-dirs:
       app
-  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N -Wall
   build-depends:
       99questions
     , base >=4.7 && <5
@@ -61,7 +61,7 @@ test-suite 99questions-test
   main-is: Spec.hs
   hs-source-dirs:
       test
-  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N -Wall -fno-warn-type-defaults
   build-depends:
       99questions
     , QuickCheck
