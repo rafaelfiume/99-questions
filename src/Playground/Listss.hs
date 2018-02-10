@@ -37,6 +37,7 @@ myButLast xs = let (_:xy) = reverse xs in head xy
 -- 3rd
 
 elementAt :: [a] -> Int -> a
+elementAt [] _ = error "empty list"
 elementAt (x:_) 1 = x
 elementAt (_:xs) k
     | k < 1 = error "index can't be lesser than one"
