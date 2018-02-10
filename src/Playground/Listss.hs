@@ -29,8 +29,8 @@ myLast' = foldr1 (const id)
 
 myButLast :: [a] -> a
 myButLast [] = error "no but last element in an empty list"
-myButLast [x] = error "just one element in the list"
-myButLast xs = let (x:xy) = reverse xs in head xy
+myButLast [_] = error "just one element in the list"
+myButLast xs = let (_:xy) = reverse xs in head xy
 
 -- 3rd
 
@@ -114,5 +114,5 @@ pack = group
 
 pack2 :: (Eq a) => [a] -> [[a]]
 pack2 = foldr packSame []
-    where packSame e ls@(x:xs) | head x == e = (e:x):xs
+    where packSame e (x:xs) | head x == e = (e:x):xs
           packSame e xs = [e]:xs

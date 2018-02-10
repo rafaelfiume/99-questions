@@ -1,7 +1,7 @@
 module Playground.ListssSpec where
 
-import Test.Hspec (Spec, describe, it, shouldBe, pending, context)
-import Test.QuickCheck
+import Test.Hspec (Spec, describe, it, shouldBe, context) -- pending
+-- import Test.QuickCheck
 
 import Control.Monad.Writer -- for compressWriter
 import Playground.Listss

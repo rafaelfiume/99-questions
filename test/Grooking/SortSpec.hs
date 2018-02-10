@@ -1,6 +1,6 @@
 module Grooking.SortSpec where
 
-import Test.Hspec (Spec, describe, it, shouldBe, context)
+import Test.Hspec (Spec, describe, it, shouldBe)
 
 import Grooking.Sort
 

@@ -1,6 +1,6 @@
 module Grooking.BinarySearchSpec where
 
-import Test.Hspec (Spec, describe, it, shouldBe, context)
+import Test.Hspec (Spec, describe, it, shouldBe)
 
 import Grooking.BinarySearch
 
