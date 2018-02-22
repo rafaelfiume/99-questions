@@ -14,4 +14,6 @@ doBinarySearch xs e l h
     | e < middleElem  = doBinarySearch xs e l (middleIndex - 1)
     | e > middleElem  = doBinarySearch xs e (l + 1) h
         where middleIndex = (l + h) `div` 2
-              middleElem  = xs !! middleIndex
+              middleElem  = xs !! middleIndex -- TODO There is a big efficiency issue here...
+                                              -- !! will go through the list till it finds the element in question
+                                              -- Consider to use Data.Array (!) instead

@@ -15,7 +15,7 @@ module Playground.Listss (
 import Control.Monad (foldM)               -- for compressWriter (8th)
 import Control.Monad.Writer (Writer, tell) -- for compressWriter (8th)
 
-import Data.List (group)                   -- for pack (9th)
+import Data.List (group, foldl')           -- group is for pack (9th)
 
 -- 1st
 
@@ -46,7 +46,7 @@ elementAt (_:xs) k
 -- 4th
 
 myLength :: [a] -> Int
-myLength = foldl (\x _ -> x + 1) 0
+myLength = foldl' (\x _ -> x + 1) 0
 
 -- 5th
 
@@ -55,7 +55,7 @@ myReverse [] = []
 myReverse (x:xs) = myReverse xs ++ [x]
 
 myReverse' :: [a] -> [a]
-myReverse' = foldl (flip (:)) []
+myReverse' = foldl' (flip (:)) []
 
 -- 6th
 
@@ -82,15 +82,19 @@ flatten' (List ls) = concatMap flatten' ls
 -- 8th
 
 compress :: (Eq a) => [a] -> [a]
-compress = reverse . foldl addIfNotThere []
-    where addIfNotThere [] x = [x]
-          addIfNotThere acc x = if head acc == x then acc else x:acc
+compress = reverse . foldl' addIfNotThere []
+    where addIfNotThere []  x = [x]
+          addIfNotThere acc x
+                        | head acc == x = acc
+                        | otherwise     = x:acc
 
 -- This is a shorter but slightly slower version
 compress2 :: (Eq a) => [a] -> [a]
 compress2 = foldr addIfNotThere []
     where addIfNotThere x [] = [x]
-          addIfNotThere x acc = if head acc == x then acc else x:acc
+          addIfNotThere x acc
+                        | head acc == x = acc
+                        | otherwise     = x:acc
 
 -- mapM_ putStrLn $ snd $ runWriter (compressWriter "aaaabccaadeeee")
 compressWriter :: (Eq a, Show a) => [a] -> Writer [String] [a]

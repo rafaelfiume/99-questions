@@ -1,4 +1,8 @@
-module Grooking.Sort where
+module Grooking.Sort (
+    selectionSort
+) where
+
+import Data.List (foldl')
 
 selectionSort :: (Ord a) => [a] -> [a]
 selectionSort [] = []

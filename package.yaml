@@ -35,6 +35,7 @@ executables:
       - -rtsopts
       - -with-rtsopts=-N
       - -Wall
+      - -fno-warn-type-defaults
     dependencies:
       - 99questions
 
