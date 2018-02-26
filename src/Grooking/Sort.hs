@@ -2,8 +2,6 @@ module Grooking.Sort (
     selectionSort
 ) where
 
-import Data.List (foldl')
-
 selectionSort :: (Ord a) => [a] -> [a]
 selectionSort [] = []
 selectionSort xs = smaller : selectionSort remaining
