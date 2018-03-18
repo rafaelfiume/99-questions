@@ -2,9 +2,9 @@ module Lib
     ( someFunc
     ) where
 
-import Playground.Learning
+import Playground.Listss
 
 someFunc :: IO ()
 someFunc = do
     putStrLn "bla bla bla"
-    putStrLn $ reverse' "rafael fiume"
+    putStrLn $ myReverse "rafael fiume"

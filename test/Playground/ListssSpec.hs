@@ -1,7 +1,8 @@
 module Playground.ListssSpec where
 
 import Test.Hspec (Spec, describe, it, shouldBe, context) -- pending
--- import Test.QuickCheck
+import Test.Hspec.QuickCheck
+import Test.QuickCheck
 
 import Control.Monad.Writer -- for compressWriter
 import Playground.Listss
@@ -10,14 +11,14 @@ import Playground.Listss
 
 spec_lists :: Spec
 spec_lists = describe "Lists (Questions 1 to 10)" $ do
-    context "myLast" $
+
+    context "myLast" $ do
         it "returns the last element" $ do
             myLast [1,2,3,4] `shouldBe` 4
             myLast ['z','x','y'] `shouldBe` 'y'
 
-        -- TODO RF : 03/02/2018 : See how to property check this one
-        -- it "returns the last element (property checking)"
-        --    pending
+        prop "always return the last element of a list" $
+            \xs -> not (null xs) ==> myLast xs == (head . reverse) (xs :: [Int])
 
     context "myButLast" $
         it "returns the last but one element of a list" $
@@ -33,10 +34,13 @@ spec_lists = describe "Lists (Questions 1 to 10)" $ do
             myLength [123, 456, 789] `shouldBe` 3
             myLength "Hello, world!" `shouldBe` 13
 
-    context "myReverse" $
+    context "myReverse" $ do
         it "reverses a list" $ do
             myReverse "A man, a plan, a canal, panama!" `shouldBe` "!amanap ,lanac a ,nalp a ,nam A"
             myReverse [1,2,3,4] `shouldBe` [4,3,2,1]
+
+        prop "returns the original list when applied twice" $
+            \xs -> myReverse (myReverse xs) == (xs :: String)
 
     context "myPalindrome" $
         it "finds out whether a list is a palindrome" $ do
