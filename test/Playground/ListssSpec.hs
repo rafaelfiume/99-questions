@@ -52,10 +52,10 @@ spec_lists = describe "Lists (Questions 1 to 10)" $ do
         it "flattens a nested list" $ do
             flatten (Elem 5) `shouldBe` [5]
             flatten (List [Elem 1, List [Elem 2, List [Elem 3, Elem 4], Elem 5]]) `shouldBe` [1,2,3,4,5]
-            flatten (List []) `shouldBe` ([] :: [Int]) -- Cast is necessary otherwise compiler complains "wha's the f#*k1n3 type?"
+            flatten (List []) `shouldBe` ([] :: [Int]) -- Cast is necessary otherwise compiler complains "what's the f#*k1n3 type?"
 
     context "compress" $ do
-        it "replaces with a single copy of the element a list contains repeated elements" $ do
+        it "replaces with a single copy of the element a list containing repeated elements" $ do
             compress "aaaabccaadeeee" `shouldBe` "abcade"
             compress [1,1,1,5,5,3,3,3,3,3,4] `shouldBe` [1,5,3,4]
 

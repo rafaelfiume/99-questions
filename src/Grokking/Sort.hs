@@ -1,4 +1,4 @@
-module Grooking.Sort (
+module Grokking.Sort (
     selectionSort,
     quicksort
 ) where

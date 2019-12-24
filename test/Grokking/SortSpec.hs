@@ -2,13 +2,13 @@
 -- For more information, go to https://downloads.haskell.org/~ghc/5.00/docs/set/scoped-type-variables.html.
 {-# LANGUAGE ScopedTypeVariables #-}
 
-module Grooking.SortSpec where
+module Grokking.SortSpec where
 
 import Test.Hspec (Spec, describe, context, it, shouldBe)
 import Test.Hspec.QuickCheck
 import Test.QuickCheck
 
-import Grooking.Sort
+import Grokking.Sort
 
 import Playground.Listss (myLast)
 import Data.List ((\\))
@@ -26,7 +26,7 @@ spec_sort = describe "Sort" $ do
 
         prop "first element is always the smallest" $ \(xs :: [Int]) ->
             not (null xs) ==>
-                head (selectionSort xs) == (minimum xs)
+                head (selectionSort xs) == minimum xs
 
     context "quicksort" $ do
         it "sorts a list" $ do

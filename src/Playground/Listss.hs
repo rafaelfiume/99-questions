@@ -40,7 +40,7 @@ elementAt :: [a] -> Int -> a
 elementAt [] _ = error "empty list"
 elementAt (x:_) 1 = x
 elementAt (_:xs) k
-    | k < 1 = error "index can't be lesser than one"
+    | k < 1 = error "index must be equal or greater than one"
     | otherwise = elementAt xs (k-1)
 
 -- 4th

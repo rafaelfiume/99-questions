@@ -1,8 +1,8 @@
-module Grooking.BinarySearchSpec where
+module Grokking.BinarySearchSpec where
 
 import Test.Hspec (Spec, describe, it, shouldBe)
 
-import Grooking.BinarySearch
+import Grokking.BinarySearch
 
 {-# ANN module "HLint: ignore Use camelCase" #-}
 

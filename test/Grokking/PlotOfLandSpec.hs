@@ -1,8 +1,8 @@
-module Grooking.PlotOfLandSpec where
+module Grokking.PlotOfLandSpec where
 
 import Test.Hspec (Spec, describe, it, shouldBe, context)
 
-import Grooking.PlotOfLand
+import Grokking.PlotOfLand
 
 {-# ANN module "HLint: ignore Use camelCase" #-}
 
@@ -13,5 +13,5 @@ spec_divideAndConquer = describe "Using Euclid's algorithm to divide a farm even
             splitUp 50 25 `shouldBe` 25
             splitUp 25 50 `shouldBe` 25
 
-        it "finds the largest square box that can be used" $ do
+        it "finds the largest square box that can be used" $
             splitUp 1680 640 `shouldBe` 80
